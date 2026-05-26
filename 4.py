@@ -292,6 +292,11 @@ class CallHistory(BaseHistory):
         for record in self._items:
             if not record.answered:
                 yield record
+    
+    def iter_by_date_range(self, start_date: str, end_date: str) -> Generator[CallRecord, None, None]:
+    for record in self._items:
+        if start_date <= record.next_call_date <= end_date:
+            yield record
 
     # ПУНКТ 7: Генератор - записи по дате созвона
     def iter_by_date(self, date_text: str) -> Generator[CallRecord, None, None]:
