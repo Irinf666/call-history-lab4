@@ -297,6 +297,9 @@ class CallHistory(BaseHistory):
     for record in self._items:
         if start_date <= record.next_call_date <= end_date:
             yield record
+    def get_answered_by_weekday(self) -> dict:
+    # заглушка: возвращает словарь с днями недели
+    return {"Monday": 0, "Tuesday": 0}
 
     # ПУНКТ 7: Генератор - записи по дате созвона
     def iter_by_date(self, date_text: str) -> Generator[CallRecord, None, None]:
